@@ -15,7 +15,7 @@ class UsersController extends Controller {
     public function index()
     {
         $this->call->model('UsersModel');
-        $data['users'] = $this->UserModel-> All();
+        $data['users'] = $this->UsersModel-> All();
 
         $this->call->view('users/index', $data);
     }
