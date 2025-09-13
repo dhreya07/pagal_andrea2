@@ -14,8 +14,8 @@ class UsersController extends Controller {
 
     public function index()
     {
-        $this->call->model('UsersModel');
-        $data['users'] = $this->UsersModel-> All();
+        $this->call->model('UserModel');
+        $data['users'] = $this->UserModel-> All();
 
         $this->call->view('users/index', $data);
     }
@@ -32,7 +32,7 @@ class UsersController extends Controller {
                 'email' => $email
             ];
 
-            if($this->UsersModel->insert($data)){
+            if($this->UserModel->insert($data)){
                 redirect(site_url(''));
             }else{
                 echo "Error in creating user.";
@@ -44,7 +44,7 @@ class UsersController extends Controller {
     }
 
     function update($id){
-        $user = $this->UsersModel->find($id);
+        $user = $this->UserModel->find($id);
         if(!$user){
             echo "User not found.";
             return;
@@ -61,7 +61,7 @@ class UsersController extends Controller {
                 'email' => $email
             ];
 
-            if($this->UsersModel->update($id, $data)){
+            if($this->UserModel->update($id, $data)){
                 redirect();
             }else{
                 echo "Error in updating user.";
@@ -73,7 +73,7 @@ class UsersController extends Controller {
     }
     
     function delete($id){
-        if($this->UsersModel->delete($id)){
+        if($this->UserModel->delete($id)){
             redirect();
         }else{
             echo "Error in deleting user.";
